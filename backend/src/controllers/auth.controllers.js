@@ -1,5 +1,14 @@
+// import bcrypt from "bcryptjs";
+
 export const signup = (req, res) => {
-    res.send("signup route")
+    const {fullName, email, password} = req.body 
+    // Hashing 12312 => jduawhdiawiodaui (este sera convertido)
+    try{
+
+    }catch(error) {
+
+    }
+
 }
 export const login = (req, res) => {
     res.send("login route")
