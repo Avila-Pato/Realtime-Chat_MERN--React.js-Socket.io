@@ -1,3 +1,4 @@
+// Cloudinary es una plataforma de almacenamiento en la nube especializada en el manejo y procesamiento de imágenes y videos
 import { v2 as cloudinary } from "cloudinary";
 
 import { config } from "dotenv";
