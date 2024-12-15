@@ -4,10 +4,10 @@ import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default [
+  { ignores: ["dist"] },
   {
-    files: ["**/*.{js,jsx,tsx}"],
+    files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -33,4 +33,4 @@ export default tseslint.config(
       "react/prop-types": "off",
     },
   },
-)
+];
