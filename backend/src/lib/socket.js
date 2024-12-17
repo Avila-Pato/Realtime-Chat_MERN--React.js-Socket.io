@@ -13,11 +13,13 @@ const io = new Server(server, {
     //configura cors apra un cliente especifico
   cors: {
     origin: ["http://localhost:5173"],
+    
   },
 });
 // Obtiene el coket id del usaurio conectado por el userId
 export function getReceiverSocketId(userId) {
-  return userSocketMap[userId]; // devuele el socketid correspondiente al userId
+  // devuele el socketid correspondiente al userId
+  return userSocketMap[userId]; 
 }
 
 //mapa de usuarios coenctados
