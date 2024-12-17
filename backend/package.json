@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
@@ -32,13 +33,30 @@
     "settings": {
       "import/resolver": {
         "node": {
-          "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx",
+            ".json"
+          ]
         }
       }
     },
     "rules": {
-      "import/no-unresolved": ["error", { "caseSensitive": false }],
-      "import/extensions": ["error", "always", { "ignorePackages": true }],
+      "import/no-unresolved": [
+        "error",
+        {
+          "caseSensitive": false
+        }
+      ],
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ignorePackages": true
+        }
+      ],
       "standard/no-callback-literal": "off",
       "no-console": "off"
     }

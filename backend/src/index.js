@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import  { connectDB } from "./lib/db.js"
 import cookieParser from "cookie-parser";
 const app = express();
+import cors from 'cors'
 
 
 import authRoutes from "./routes/auth.route.js"
@@ -13,7 +14,11 @@ const PORT = process.env.PORT
 app.use(express.json()) // Para parsear JSON en el cuerpo de las solicitudes
 
 app.use(cookieParser()); // Habilitar el middleware de cookies
-
+// Configuración CORS
+app.use(cors({
+    origin: 'http://localhost:5173', 
+    credentials: true // Permite el envío de cookies y credenciales
+}));
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes)
 
