@@ -1,3 +1,7 @@
+
+// Componente AuthImagePattern para mostrar una
+//  imagen de fondo y un patrón de cuadrículas
+
 const AuthImagePattern = ({ title, subtitle }) => {
     return (
       <div className="hidden lg:flex items-center justify-center bg-base-200 p-12">
