@@ -10,9 +10,11 @@ import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import SignUpPage from "./pages/SignUpPage";
+import { useThemeStore } from './store/useThemeStore';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     checkAuth(); // Verificar el estado de autenticación al montar la aplicación
@@ -30,7 +32,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div>
+      <div data-theme={theme}>
         <Navbar />
         <Routes>
           <Route
