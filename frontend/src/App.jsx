@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
+import { useThemeStore } from './store/useThemeStore';  
+
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
@@ -10,7 +12,6 @@ import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import SignUpPage from "./pages/SignUpPage";
-import { useThemeStore } from './store/useThemeStore';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -55,7 +56,7 @@ const App = () => {
         </Routes>
         <Toaster />
       </div>
-
+      
     </BrowserRouter>
   );
 };

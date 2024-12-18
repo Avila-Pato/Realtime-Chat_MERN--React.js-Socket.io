@@ -7,11 +7,12 @@ import { io } from "socket.io-client";
 const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 export const useAuthStore = create((set, get) => ({
-    authUser: null,
-    isSigningUp: false, 
-    isLoggingIn: false, 
-    isUpdatingProfile: false,
-    isCheckingAuth: true,
+    authUser: null, // Representa el usuario autenticado. Inicialmente es null.
+    //Inicialmente, su valor es null porque no hay ningún usuario autenticado al cargar la aplicación.
+    isSigningUp: false, // Indica si el usuario está en el proceso de registrarse. Inicialmente es false.
+    isLoggingIn: false, // Indica si el usuario está en el proceso de iniciar sesión. Inicialmente es false.
+    isUpdatingProfile: false, // Indica si el usuario está actualizando su perfil. Inicialmente es false.
+    isCheckingAuth: true, // Indica si la aplicación está verificando la autenticación del usuario. Por defecto es true.
 
     // Verificar autenticación
     checkAuth: async () => {
