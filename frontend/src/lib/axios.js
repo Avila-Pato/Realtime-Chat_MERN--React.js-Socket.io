@@ -6,10 +6,8 @@ export const axiosInstance = axios.create({
   // Configura la baseURL dependiendo del entorno en el que estemos.
   baseURL:
     import.meta.env.MODE === "development"
-      ? // En modo desarrollo, usamos el servidor local.
-        "http://localhost:5001/api"
-      : // En producción, usamos la ruta relativa "/api".
-        "/api",
+      ? "http://localhost:5001/api"
+      : "/api",
 
   // Habilitamos el envío de cookies y encabezados de autenticación con las solicitudes.
   withCredentials: true,

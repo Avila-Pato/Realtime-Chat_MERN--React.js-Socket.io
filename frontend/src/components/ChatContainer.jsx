@@ -29,6 +29,7 @@ useEffect(() => {
     subscribeToMessages() // se conecta al canal para recibir el mensaje
 
     return () => unsubscribeFromMessages() // limpia el canal cuando el usuario cierra el canal
+    
 },[selectedUser._id, getMessages, subscribeToMessages, unsubscribeFromMessages])
 useEffect(() => {
     // Desplazamiento automático a la última posición de mensaje

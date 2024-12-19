@@ -2,44 +2,43 @@ import { useRef, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
 import { Image, Send, X } from "lucide-react";
 import toast from "react-hot-toast";
-const MessageInput = () => {
-  const [text, setText] = useState(""); // estado para el texto del mensaje
-  const [imagePreview, setImagePreview] = useState(null); // estado para la vista previa de la iamgen sellecionada
-  const fileInputRef = useRef(null); // referencia al input para acceder a el desde el DOM
-  const { sendMessage } = useChatStore(); // store  para enviar mensajes
 
-  const handleImageChange = (e) => { // maneja el cambio de imagen cuando se selleciona 1 archivo
+const MessageInput = () => {
+  const [text, setText] = useState(""); // Estado para el texto del mensaje
+  const [imagePreview, setImagePreview] = useState(null); // Estado para la vista previa de la imagen seleccionada
+  const fileInputRef = useRef(null); // Referencia al input para acceder a él desde el DOM
+  const { sendMessage } = useChatStore(); // Store para enviar mensajes
+
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file.type.startsWith("image/")) {
       toast.error("Por favor selecciona un archivo de imagen");
       return;
     }
 
-    const reader = new FileReader(); 
+    const reader = new FileReader();
     reader.onloadend = () => {
-      setImagePreview(reader.result); // actualiza la vista previa de la imagen
+      setImagePreview(reader.result); // Actualiza la vista previa de la imagen
     };
-    reader.readAsDataURL(file); // lee el archivo como una cadena base64 osea como una imagen
+    reader.readAsDataURL(file); // Lee el archivo como una cadena base64 (es decir, como una imagen)
   };
 
-//   Funcion para eliminar la imagen sellecionada y reinicia la vista previa
   const removeImage = () => {
     setImagePreview(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-//   Maneja el envio del mensaje
   const handleSendMessage = async (e) => {
-    e.preventDefault(); // previene el envio por defecto del formulario
-    if (!text.trim() && !imagePreview) return; //  si no ahi texto ni imagen no se envia el mensaje
+    e.preventDefault(); // Previene el envío por defecto del formulario
+    if (!text.trim() && !imagePreview) return; // Si no hay texto ni imagen, no se envía el mensaje
 
     try {
       await sendMessage({
-        text: text.trim(),// texto del mensaje
-        image: imagePreview, // vista previa de la iamgen o null si no ahi imagen
+        text: text.trim(), // Texto del mensaje
+        image: imagePreview, // Vista previa de la imagen o null si no hay imagen
       });
 
-      // limpiar el formulario el input despues de enviar el mensaje
+      // Limpiar el formulario después de enviar el mensaje
       setText("");
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -52,7 +51,7 @@ const MessageInput = () => {
     <div className="p-4 w-full">
       {imagePreview && (
         <div className="mn-3 flex items-center gap-2">
-          <div className="realative">
+          <div className="relative">
             <img
               src={imagePreview}
               alt="Preview"
@@ -85,12 +84,11 @@ const MessageInput = () => {
             ref={fileInputRef}
             onChange={handleImageChange} // Gestiona el cambio de imagen
           />
-
           <button
             type="button"
             className={`hidden sm:flex btn btn-circle
                      ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
-            onClick={() => fileInputRef.current?.click()}  // Muestra el input de archivo al hacer clic en el botón
+            onClick={() => fileInputRef.current?.click()} // Muestra el input de archivo al hacer clic en el botón
           >
             <Image size={20} />
           </button>
@@ -98,7 +96,7 @@ const MessageInput = () => {
         <button
           type="submit"
           className="btn btn-sm btn-circle"
-          disabled={!text.trim() && !imagePreview}  // Deshabilita el botón si no hay texto ni imagen
+          disabled={!text.trim() && !imagePreview} // Deshabilita el botón si no hay texto ni imagen
         >
           <Send size={22} />
         </button>

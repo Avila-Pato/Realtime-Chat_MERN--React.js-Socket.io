@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
 import { useThemeStore } from './store/useThemeStore';  
 
@@ -32,7 +32,6 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
       <div data-theme={theme}>
         <Navbar />
         <Routes>
@@ -56,8 +55,6 @@ const App = () => {
         </Routes>
         <Toaster />
       </div>
-      
-    </BrowserRouter>
   );
 };
 
